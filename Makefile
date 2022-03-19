@@ -42,21 +42,21 @@ lint: ## Run golint and go vet.
 dist:
 	mkdir -p dist
 	@# darwin
-	@for arch in "amd64" "386"; do \
+	@for arch in "amd64" "386 arm arm64"; do \
 		GOOS=darwin GOARCH=$${arch} make build; \
 		cd bin; \
 		zip ../dist/$(NAME)-$(VERSION)-darwin-$${arch}.zip $(NAME); \
 		cd ..; \
 	done;
 	@# linux
-	@for arch in "amd64" "386"; do \
+	@for arch in "amd64" "386 arm arm64"; do \
 		GOOS=linux GOARCH=$${arch} make build; \
 		cd bin; \
 		tar zcvf ../dist/$(NAME)-$(VERSION)-linux-$${arch}.tar.gz $(NAME); \
 		cd ..; \
 	done;
 	@# windows
-	@for arch in "amd64" "386"; do \
+	@for arch in "amd64" "386 arm arm64"; do \
 		GOOS=windows GOARCH=$${arch} make build; \
 		cd bin; \
 		zip ../dist/$(NAME)-$(VERSION)-windows-$${arch}.zip $(NAME).exe; \
